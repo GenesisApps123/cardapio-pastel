@@ -1,3 +1,4 @@
+```html id="9zf7pk"
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -50,6 +51,26 @@ margin-bottom:10px;
 text-align:center;
 margin-bottom:30px;
 color:#555;
+}
+
+.preco-fixo{
+position:sticky;
+top:10px;
+z-index:999;
+background:#0b9637;
+color:white;
+padding:18px;
+border-radius:20px;
+text-align:center;
+margin-bottom:25px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.preco-fixo span{
+font-size:2rem;
+font-weight:bold;
+display:block;
+margin-top:5px;
 }
 
 .section{
@@ -133,18 +154,6 @@ resize:none;
 height:100px;
 }
 
-.total{
-background:#0b9637;
-color:white;
-text-align:center;
-padding:25px;
-border-radius:25px;
-}
-
-.total h2{
-font-size:2rem;
-}
-
 button{
 width:100%;
 border:none;
@@ -198,6 +207,10 @@ font-size:1.8rem;
 padding:18px;
 }
 
+.preco-fixo span{
+font-size:1.5rem;
+}
+
 }
 
 </style>
@@ -215,6 +228,14 @@ padding:18px;
 Monte seu pastel do seu jeito 🍴
 </p>
 
+<div class="preco-fixo">
+
+TOTAL DO PEDIDO
+
+<span id="total">R$ 0,00</span>
+
+</div>
+
 <div class="section">
 
 <h2>🥟 Escolha o tamanho</h2>
@@ -230,7 +251,7 @@ Monte seu pastel do seu jeito 🍴
 <p class="info">1 recheio incluso</p>
 
 <p class="info recheio-extra">
-Cada recheio adicional custa + R$ 1,99
+Cada recheio adicional custa + R$ 2,99
 </p>
 
 <input type="number" min="0" value="0" id="medio" class="quantidade">
@@ -246,7 +267,7 @@ Cada recheio adicional custa + R$ 1,99
 <p class="info">1 recheio incluso</p>
 
 <p class="info recheio-extra">
-Cada recheio adicional custa + R$ 1,99
+Cada recheio adicional custa + R$ 2,99
 </p>
 
 <input type="number" min="0" value="0" id="grande" class="quantidade">
@@ -256,11 +277,13 @@ Cada recheio adicional custa + R$ 1,99
 </div>
 
 <div class="aviso">
-⚠️ O cliente pode escolher quantos recheios quiser.<br><br>
+
+⚠️ Você pode montar seu pastel com quantos recheios quiser.<br><br>
 
 ✅ O primeiro recheio é grátis.<br>
 
-💰 Cada recheio adicional acrescenta R$ 1,99 no valor do pastel.
+💰 Cada recheio adicional acrescenta R$ 2,99 no valor do pedido.
+
 </div>
 
 </div>
@@ -381,14 +404,6 @@ Cada recheio adicional custa + R$ 1,99
 
 </div>
 
-<div class="total">
-
-<p>Total do Pedido</p>
-
-<h2 id="total">R$ 0,00</h2>
-
-</div>
-
 <button onclick="finalizarPedido()">
 
 FINALIZAR PEDIDO NO WHATSAPP
@@ -431,7 +446,7 @@ if(recheiosSelecionados > totalPasteis){
 
 const extras = recheiosSelecionados - totalPasteis;
 
-total += extras * 1.99;
+total += extras * 2.99;
 
 }
 
@@ -570,7 +585,7 @@ extras = recheios.length - totalPasteis;
 
 }
 
-let valorExtras = extras * 1.99;
+let valorExtras = extras * 2.99;
 
 let mensagem = '';
 
@@ -650,3 +665,5 @@ calcularTotal();
 
 </body>
 </html>
+```
+
