@@ -281,7 +281,7 @@ Cada recheio adicional custa + R$ 2,99
 
 ✅ O primeiro recheio é grátis.<br>
 
-💰 Cada recheio adicional acrescenta R$ 2,99 no valor do pedido.
+💰 Cada recheio adicional acrescenta R$ 2,99 em CADA pastel do pedido.
 
 </div>
 
@@ -424,6 +424,8 @@ let total = 0;
 const qtdMedio = parseInt(medio.value) || 0;
 const qtdGrande = parseInt(grande.value) || 0;
 
+const totalPasteis = qtdMedio + qtdGrande;
+
 total += qtdMedio * 9.99;
 total += qtdGrande * 14.99;
 
@@ -439,13 +441,19 @@ recheiosSelecionados++;
 
 });
 
-const totalPasteis = qtdMedio + qtdGrande;
+/*
+1 recheio grátis por pastel
+extras = recheios selecionados - 1
+multiplica pelos pastéis
+*/
 
-if(recheiosSelecionados > totalPasteis){
+if(recheiosSelecionados > 1){
 
-const extras = recheiosSelecionados - totalPasteis;
+const extrasPorPastel = recheiosSelecionados - 1;
 
-total += extras * 2.99;
+const valorExtras = extrasPorPastel * 2.99 * totalPasteis;
+
+total += valorExtras;
 
 }
 
@@ -574,17 +582,17 @@ bebidas.push(item.value);
 
 });
 
-let extras = 0;
-
 const totalPasteis = qtdMedio + qtdGrande;
 
-if(recheios.length > totalPasteis){
+let extrasPorPastel = 0;
 
-extras = recheios.length - totalPasteis;
+if(recheios.length > 1){
+
+extrasPorPastel = recheios.length - 1;
 
 }
 
-let valorExtras = extras * 2.99;
+let valorExtras = extrasPorPastel * 2.99 * totalPasteis;
 
 let mensagem = '';
 
@@ -664,5 +672,5 @@ calcularTotal();
 
 </body>
 </html>
-```
+
 
